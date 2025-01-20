@@ -93,17 +93,10 @@ export default {
     // Save new or updated product
    const saveProduct = async () => {
     try {
-        // המרת התמונה לפורמט Base64
+        
         const imageFile =fileInput.value.files[0]; 
         const base64Image = await convertToBase64(imageFile);
-         // const fileInputElement = document.querySelector('#fileInput'); 
-    //const imageFile = fileInputElement?.files[0]; 
-//let base64Image = '';
-    //if (imageFile && imageFile instanceof Blob) {
-    //  base64Image = await convertToBase64(imageFile); 
-    //} else {
-     // console.log('No valid image file selected');
-   // }
+         
         console.log('ImagePath before sending:', form.value.ImagePath);
         const product = {
             ProductCode: form.value.ProductCode,
@@ -126,7 +119,7 @@ export default {
         const response = await fetch(endpoint, {
             method,
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(product), // שליחה של המוצר כ-JSON
+            body: JSON.stringify(product), 
               
             
 
@@ -180,15 +173,7 @@ const filteredProducts = computed(() => {
     return productCode.includes(query) || productName.includes(query)||  description.includes(query);
   });
 });
-    // Filter products based on search query
-   // const filteredProducts = computed(() => {
-  //return products.value.filter((product) =>
-  //typeof product.productCode === "string" &&
-  //product.productCode.includes(searchQuery.value)||
-   // product.productName.includes(searchQuery.value) 
     
-  //);
-//});
 
     // Open dialog for new product
     const openDialog = () => {
